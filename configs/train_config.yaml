@@ -1,0 +1,36 @@
+# Lever-LM PointerSelector training configuration
+# Pass overrides via CLI: python train.py --lr 2e-4 ...
+
+data:
+  train_file: data/vqav2_train_beams.json
+  val_file:   data/vqav2_val_beams.json
+  test_file:  null
+  batch_size: 64
+  num_workers: 4
+  max_beams:  5
+  shot_num:   2
+  K:          64
+
+model:
+  d_model:     768
+  hidden_dim:  256
+  num_heads:   4
+  num_layers:  2
+  dropout:     0.1
+  attn_dropout: 0.1
+  label_smoothing: 0.1
+
+training:
+  loss_mode:    rce          # rce | ce (ablation)
+  lr:           1.0e-4
+  weight_decay: 1.0e-2
+  warmup_steps: 500
+  max_steps:    10000
+  max_epochs:   50
+  precision:    bf16-mixed   # 32 | 16-mixed | bf16-mixed
+  gpus:         1
+
+io:
+  ckpt_dir:  checkpoints
+  log_dir:   logs
+  run_name:  lever_lm_pointer_rce

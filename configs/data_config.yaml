@@ -1,0 +1,24 @@
+# Data generation configuration
+
+vqav2:
+  local_path: null          # set to /path/to/vqav2 for local loading
+  split: train
+
+qwen_vl:
+  model_name: Qwen/Qwen2-VL-2B-Instruct
+  device: auto
+  embed_batch: 16
+
+generation:
+  shot_num:   2
+  beam_size:  5
+  K:          64
+  pool_size:  null          # null = use entire train set as pool
+  max_samples: null         # null = all; set small number for debug
+
+output:
+  train_file: data/vqav2_train_beams.json
+  val_file:   data/vqav2_val_beams.json
+  pool_file:  data/vqav2_pool.json
+
+seed: 42

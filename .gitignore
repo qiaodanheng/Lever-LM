@@ -1,0 +1,21 @@
+# Data & artifacts
+data/
+checkpoints/
+results/
+logs/
+__pycache__/
+*.pyc
+.env
+
+# Large binaries
+*.pt
+*.ckpt
+*.jsonl
+pool_images*/
+
+# Reports (binary; markdown versions are kept)
+*.docx
+
+# IDE
+.idea/
+.vscode/
